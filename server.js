@@ -1,8 +1,16 @@
 const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 require('dotenv').config();
 
 const app = express();
+
+app.use(cors()); // Enable CORS
+app.use(helmet()); // Add security headers
+app.use(morgan('dev')); // Log HTTP requests
+app.disable('x-powered-by'); // Hide Express server information
 
 // Proxy tới service A
 app.use(

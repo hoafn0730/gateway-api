@@ -19,7 +19,7 @@ app.use(
         target: process.env.SERVICE_SSO_URL,
         changeOrigin: true,
         // pathRewrite: {
-        //     '^/sso-api': '', // Xóa tiền tố '/service-a' khi chuyển tiếp
+        //     '^/api/v1': '/api/v1', // Xóa tiền tố '/service-a' khi chuyển tiếp
         // },
     }),
 );

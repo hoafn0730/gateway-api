@@ -14,25 +14,25 @@ app.disable('x-powered-by'); // Hide Express server information
 
 // Proxy tới service A
 app.use(
-    '/sso-api',
+    '/api/v1/auth',
     createProxyMiddleware({
         target: process.env.SERVICE_SSO_URL,
         changeOrigin: true,
-        pathRewrite: {
-            '^/sso-api': '', // Xóa tiền tố '/service-a' khi chuyển tiếp
-        },
+        // pathRewrite: {
+        //     '^/sso-api': '', // Xóa tiền tố '/service-a' khi chuyển tiếp
+        // },
     }),
 );
 
 // Proxy tới service B
 app.use(
-    '/fdemy-api',
+    '/api/v1',
     createProxyMiddleware({
         target: process.env.SERVICE_FDEMY_URL,
         changeOrigin: true,
-        pathRewrite: {
-            '^/fdemy-api': '', // Xóa tiền tố '/service-b' khi chuyển tiếp
-        },
+        // pathRewrite: {
+        //     '^/fdemy-api': '', // Xóa tiền tố '/service-b' khi chuyển tiếp
+        // },
     }),
 );
 

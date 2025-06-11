@@ -10,31 +10,6 @@ const app = express();
 app.use(cors()); // Enable CORS
 app.use(helmet()); // Add security headers
 app.use(morgan('dev')); // Log HTTP requests
-app.disable('x-powered-by'); // Hide Express server information
-
-// Proxy tới service A
-app.use(
-    '/api/v1/auth',
-    createProxyMiddleware({
-        target: process.env.SERVICE_SSO_URL,
-        changeOrigin: true,
-        // pathRewrite: {
-        //     '^/api/v1': '/api/v1', // Xóa tiền tố '/service-a' khi chuyển tiếp
-        // },
-    }),
-);
-
-// Proxy tới service B
-app.use(
-    '/api/v1',
-    createProxyMiddleware({
-        target: process.env.SERVICE_FDEMY_URL,
-        changeOrigin: true,
-        // pathRewrite: {
-        //     '^/fdemy-api': '', // Xóa tiền tố '/service-b' khi chuyển tiếp
-        // },
-    }),
-);
 
 app.get('/', (req, res) => {
     res.json('hello world');

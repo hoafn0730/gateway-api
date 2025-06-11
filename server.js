@@ -11,9 +11,7 @@ app.use(cors()); // Enable CORS
 app.use(helmet()); // Add security headers
 app.use(morgan('dev')); // Log HTTP requests
 
-app.get('/', (req, res) => {
-    res.json('hello world');
-});
+app.use(require('./routes'));
 
 // Lắng nghe ở cổng được chỉ định
 const PORT = process.env.PORT || 6000;

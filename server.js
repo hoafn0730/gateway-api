@@ -36,6 +36,10 @@ app.use(
     }),
 );
 
+app.get('/', (req, res) => {
+    res.json('hello world');
+});
+
 // Lắng nghe ở cổng được chỉ định
 const PORT = process.env.PORT || 6000;
 
